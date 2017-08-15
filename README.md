@@ -28,7 +28,7 @@ or run it manually like this:
 $> node server.js
 ```
 
-# To compile
+## To compile
 
 The repository contains the compiled file but in case you want to recompile you will need to install ``webpack v^2.0.0`` globally like this:
 
