@@ -1,6 +1,6 @@
 # Frontend Developer Assessment
 
-## Before runnning
+## Before running
 
 This projects requires some dependencies and they can be installed running the following command:
 
