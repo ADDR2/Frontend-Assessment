@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <div ng-app="Assessment" ng-controller="mainController as main" class="row gnomes-container">
+      
+      <div class="col-xs-6 col-md-4 col-md-offset-2 col-lg-2 col-lg-offset-4 search-text">
+        <input placeholder="Search here" type="text" ng-model="main.input" ng-change="main.filterGnomes($event)" />
+      </div>
+
+      <div class="col-xs-6 col-md-4 search-filter">
+        <select ng-model="main.filterBy">
+          <option value="" default disabled>Filter By</option>
+          <option>Name</option>
+          <option>Age</option>
+          <option>Height</option>
+          <option>Weight</option>
+          <option>Hair color</option>
+        </select>
+      </div>
+
+      <div ng-if="main.data.length" ng-click="main.displayModal($event, gnome.id)" ng-repeat="gnome in main.filteredData" class="col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-1 col-lg-2 gnome-thumbnail">
+        <img src={{gnome.thumbnail}}>
+        <h4>{{gnome.name}}</h4>
+        <p>Age: {{gnome.age}} years</p>
+      </div>
+
+      <h1 ng-if="!main.data.length">Loading...</h1>
+
+      <div id="myModal" class="modal">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" ng-click="main.hideModal($event)">&times;</span>
+            <h2>{{main.selectedGnome.name}}</h2>
+          </div>
+          <div class="modal-body row">
+            <div class="col-xs-12 col-md-8 thumbnail-in-modal">
+              <img src={{main.selectedGnome.thumbnail}}>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <p><b>Age:</b> {{main.selectedGnome.age}}</p>
+              <p><b>Height:</b> {{main.selectedGnome.height}}</p>
+              <p><b>Weight:</b> {{main.selectedGnome.weight}}</p>
+              <p><b>Hair Color:</b> {{main.selectedGnome.hair_color}}</p>
+              <p ng-if="main.selectedGnome.professions.length"><b>Professions:</b>
+                <ul>
+                  <li ng-repeat="profession in main.selectedGnome.professions">
+                    {{profession}}
+                  </li>
+                </ul>
+              </p>
+              <p ng-if="main.selectedGnome.friends.length"><b>Friends:</b>
+                <ul>
+                  <li ng-repeat="friend in main.selectedGnome.friends">
+                    {{friend}}
+                  </li>
+                </ul>
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            &nbsp;
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

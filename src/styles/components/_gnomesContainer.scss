@@ -1,0 +1,33 @@
+div.gnomes-container {
+    background-color: $light-grey;
+    margin: 1rem;
+
+    > div.gnome-thumbnail{
+        background-color: $light-yellow;
+        border: .1rem solid $black;
+        border-radius: .3rem;
+        padding: .2rem;
+        margin: 1rem;
+        cursor: pointer;
+
+        > img {
+            width: 100%;
+            max-height: 13rem;
+        }
+        
+        > h4 {
+            color: $black;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        > p {
+            @extend h4;
+            font-weight: normal;
+        }
+
+        &:hover{
+            box-shadow: 0 0 .5rem .3rem rgba(0, 140, 186, 0.5);
+        }
+    }
+}
